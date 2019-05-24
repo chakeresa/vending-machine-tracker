@@ -4,9 +4,11 @@ RSpec.describe Snack, type: :model do
   describe 'validations' do
     it { should validate_presence_of :name }
     it { should validate_presence_of :price }
-    it { should have_many(:machines).through(:machine_snacks) }
   end
 
+  describe 'relationships' do
+    it { should have_many(:machines).through(:machine_snacks) }
+  end
 
   describe "instance methods" do
     it "#machine_count" do

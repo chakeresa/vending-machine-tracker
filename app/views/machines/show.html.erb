@@ -1,6 +1,6 @@
 <h1><%= @machine.location %> Vending Machine</h1>
 <<ul>
-  <% @machine.snacks.each do |snack| %>
+  <% @machine.unique_snacks.each do |snack| %>
   <li id="snack-<%= snack.id %>"><%= snack.name %>: $<%= snack.price.round(2) %></li>
   <% end %>
   <% if @machine.snack_count > 0 %>
