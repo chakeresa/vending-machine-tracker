@@ -1,6 +1,6 @@
 <h1><%= @snack.name %></h1>
 <p>Price: $<%= @snack.price.round(2) %></p>
-<% if @snack.locations_count > 0 %>
+<% if @snack.machine_count > 0 %>
   <h2>Locations</h2>
   <% @snack.machines.each do |machine| %>
     <li id="<%= machine.id %>"><%= machine.location %> (<%= machine.snack_count_words %> of snacks, average price of $<%= machine.average_price %>)</li>

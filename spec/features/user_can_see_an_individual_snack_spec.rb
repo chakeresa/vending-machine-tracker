@@ -25,7 +25,7 @@ RSpec.describe 'When a user visits a snack show page', type: :feature do
     turing.machine_snacks.create(snack: snack_1)
     other_machine.machine_snacks.create(snack: snack_2)
 
-    visit snack_path(snack)
+    visit snack_path(snack_1)
 
     expect(page).to have_content("Locations")
 
@@ -36,7 +36,7 @@ RSpec.describe 'When a user visits a snack show page', type: :feature do
     within("#machine-#{turing.id}") do
       expect(page).to have_content("#{turing.location} (1 kind of snacks, average price of $#{snack_1.price.round(2)})")
     end
-    
+
     expect(page).to_not have_content(other_machine.location)
   end
 end
