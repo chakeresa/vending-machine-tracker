@@ -1,4 +1,5 @@
 require 'rails_helper'
+include ActionView::Helpers::NumberHelper
 
 RSpec.describe 'When a user visits a vending machine show page', type: :feature do
   scenario 'they see the location of that machine' do
@@ -19,11 +20,11 @@ RSpec.describe 'When a user visits a vending machine show page', type: :feature 
     visit machine_path(dons)
 
     within("#snack-#{snack_1.id}") do
-      expect(page).to have_content("#{snack_1.name}: $#{snack_1.price}")
+      expect(page).to have_content("#{snack_1.name}: #{number_to_currency(snack_1.price)}")
     end
 
     within("#snack-#{snack_2.id}") do
-      expect(page).to have_content("#{snack_2.name}: $#{snack_2.price}")
+      expect(page).to have_content("#{snack_2.name}: #{number_to_currency(snack_2.price)}")
     end
   end
 
@@ -36,6 +37,6 @@ RSpec.describe 'When a user visits a vending machine show page', type: :feature 
 
     visit machine_path(dons)
 
-    expect(page).to have_content("Average Price: $#{avg_price.round(2)}")
+    expect(page).to have_content("Average Price: #{number_to_currency(avg_price)}")
   end
 end
