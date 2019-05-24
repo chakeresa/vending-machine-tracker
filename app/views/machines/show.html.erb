@@ -3,6 +3,7 @@
   <% @machine.snacks.each do |snack| %>
   <li id="snack-<%= snack.id %>"><%= snack.name %>: $<%= snack.price.round(2) %></li>
   <% end %>
-
-  <li>Average Price: @machine.average_price</li>
+  <% if @machine.snack_count > 0 %>
+    <li>Average Price: $<%= @machine.average_price.round(2) %></li>
+  <% end %>
 </ul>
