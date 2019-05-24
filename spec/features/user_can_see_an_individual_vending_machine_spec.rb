@@ -10,7 +10,20 @@ RSpec.describe 'When a user visits a vending machine show page', type: :feature 
     expect(page).to have_content("Don's Mixed Drinks Vending Machine")
   end
 
-  xscenario "they see the names and prices of all snacks in that machine" do
+  scenario "they see the names and prices of all snacks in that machine" do
+    owner = Owner.create(name: "Sam's Snacks")
+    dons  = owner.machines.create(location: "Don's Mixed Drinks")
+    snack_1 = dons.snacks.create(name: "KitKat", price: 2.50)
+    snack_2 = dons.snacks.create(name: "Snickers", price: 1.70)
 
+    visit machine_path(dons)
+
+    within("#snack-#{snack_1.id}") do
+      expect(page).to have_content("#{snack_1.name}: $#{snack_1.price}")
+    end
+
+    within("#snack-#{snack_2.id}") do
+      expect(page).to have_content("#{snack_2.name}: $#{snack_2.price}")
+    end
   end
 end
