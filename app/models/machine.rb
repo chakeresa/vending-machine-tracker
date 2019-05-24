@@ -15,7 +15,11 @@ class Machine < ApplicationRecord
     snacks.count
   end
 
+  def unique_snacks
+    snacks.distinct
+  end
+
   def snack_count_words
-    pluralize(snack_count, "kind")
+    pluralize(unique_snacks.count, "kind")
   end
 end
