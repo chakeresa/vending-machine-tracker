@@ -8,9 +8,9 @@ RSpec.describe 'When a user visits a snack show page', type: :feature do
     visit snack_path(snack)
 
     expect(page).to have_content(snack.name)
-    expect(page).to have_content("$#{snack.price}")
-    
+    expect(page).to have_content("Price: $#{snack.price}")
+
     expect(page).to_not have_content(other_snack.name)
-    expect(page).to_not have_content("$#{other_snack.price}")
+    expect(page).to_not have_content("Price: $#{other_snack.price}")
   end
 end
