@@ -1,4 +1,6 @@
 class Machine < ApplicationRecord
+  include ActionView::Helpers::TextHelper
+
   validates_presence_of :location
 
   belongs_to :owner
@@ -11,5 +13,9 @@ class Machine < ApplicationRecord
 
   def snack_count
     snacks.count
+  end
+
+  def snack_count_words
+    pluralize(snack_count, "snack")
   end
 end
