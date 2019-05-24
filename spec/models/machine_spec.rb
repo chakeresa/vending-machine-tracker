@@ -35,7 +35,7 @@ RSpec.describe Machine, type: :model do
       dons  = owner.machines.create(location: "Don's Mixed Drinks")
       snack_1 = dons.snacks.create(name: "KitKat", price: 2.50)
 
-      expect(dons.snack_count_words).to eq ("1 snack")
+      expect(dons.snack_count_words).to eq ("1 kind")
     end
 
     it "#snack_count_words - multiple" do
@@ -44,7 +44,7 @@ RSpec.describe Machine, type: :model do
       snack_1 = dons.snacks.create(name: "KitKat", price: 2.50)
       snack_2 = dons.snacks.create(name: "Snickers", price: 1.70)
 
-      expect(dons.snack_count_words).to eq ("2 snacks")
+      expect(dons.snack_count_words).to eq ("2 kinds")
     end
   end
 end

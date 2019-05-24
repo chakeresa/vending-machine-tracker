@@ -17,5 +17,16 @@ RSpec.describe Snack, type: :model do
 
       expect(snack_1.machine_count).to eq (2)
     end
+
+    it "#unique_machines" do
+      owner = Owner.create(name: "Sam's Snacks")
+      dons  = owner.machines.create(location: "Don's Mixed Drinks")
+      turing  = owner.machines.create(location: "Turing Basement")
+      snack_1 = dons.snacks.create(name: "KitKat", price: 2.50)
+      turing.machine_snacks.create(snack: snack_1)
+      turing.machine_snacks.create(snack: snack_1)
+
+      expect(snack_1.unique_machines).to eq ([dons, turing])
+    end
   end
 end

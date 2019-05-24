@@ -2,7 +2,7 @@
 <p>Price: $<%= @snack.price.round(2) %></p>
 <% if @snack.machine_count > 0 %>
   <h2>Locations</h2>
-  <% @snack.machines.each do |machine| %>
-    <li id="<%= machine.id %>"><%= machine.location %> (<%= machine.snack_count_words %> of snacks, average price of $<%= machine.average_price %>)</li>
+  <% @snack.unique_machines.each do |machine| %>
+    <li id="machine-<%= machine.id %>"><%= machine.location %> (<%= machine.snack_count_words %> of snacks, average price of $<%= machine.average_price %>)</li>
   <% end %>
 <% end %>

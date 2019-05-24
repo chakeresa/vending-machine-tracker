@@ -30,7 +30,7 @@ RSpec.describe 'When a user visits a snack show page', type: :feature do
     expect(page).to have_content("Locations")
 
     within("#machine-#{dons.id}") do
-      expect(page).to have_content("#{dons.location} (2 kinds of snacks, average price of $#{((snack_2.price + snack_2.price)/2.0).round(2)})")
+      expect(page).to have_content("#{dons.location} (2 kinds of snacks, average price of $#{((snack_1.price + snack_2.price)/2.0).round(2)})")
     end
 
     within("#machine-#{turing.id}") do

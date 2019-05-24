@@ -16,6 +16,6 @@ class Machine < ApplicationRecord
   end
 
   def snack_count_words
-    pluralize(snack_count, "snack")
+    pluralize(snack_count, "kind")
   end
 end

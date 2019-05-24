@@ -8,4 +8,8 @@ class Snack < ApplicationRecord
   def machine_count
     machines.count
   end
+
+  def unique_machines
+    machines.distinct
+  end
 end
